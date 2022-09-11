@@ -1,6 +1,6 @@
 # Turtlebot3-burger-backup
 
-|||
+|OS|Type|
 |--|--|
 |OS|Ubuntu 20.04 LTS|
 |ROS|Noetic|
