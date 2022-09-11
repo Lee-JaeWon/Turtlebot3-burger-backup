@@ -71,8 +71,24 @@ cd ./opencr_update
 ## Cartographer in Master PC
 https://github.com/cartographer-project/cartographer_ros/issues/1726
 ```
+sudo apt update
+sudo apt install -y python3-wstool python3-rosdep ninja-build stow
+cd ~/carto_ws/
+wstool init src
+wstool merge -t src https://raw.githubusercontent.com/cartographer-project/cartographer_ros/master/cartographer_ros.rosinstall
+wstool update -t src
+sudo rosdep init
+rosdep update
+rosdep install --from-paths src --ignore-src --rosdistro=noetic -y
+src/cartographer/scripts/install_abseil.sh
+sudo apt remove ros-noetic-abseil-cpp # Ignore it if it doesn't work.
+catkin_make_isolated --install --use-ninja
+```
+```
+source ~/carto_ws/install_isolated/setup.bash
 roslaunch turtlebot3_slam turtlebot3_slam.launch slam_methods:=cartographer
 ```
 
 ## Reference
 [ROBOTIS:Quick Start Guide](https://emanual.robotis.com/docs/en/platform/turtlebot3/quick-start/)
+https://github.com/msjun23/bashrc-backup
