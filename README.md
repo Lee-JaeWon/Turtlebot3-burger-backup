@@ -22,36 +22,20 @@ alias cm='cd ~/catkin_ws && catkin_make'
 source /opt/ros/noetic/setup.bash
 
 # ROS Network
-export ROS_IP=192.168.0.4 # Master PC
+export ROS_IP=192.168.0.4
 export ROS_MASTER_URI=http://${ROS_IP}:11311
 export ROS_HOSTNAME=${ROS_IP}
 
 export TB3_MODEL=burger
 export TURTLEBOT3_MODEL=${TB3_MODEL}
-```
 
-## Turtlebot3(Raspberry pi 4)
-```bash
-# bashrc aliases
-alias gb='gedit ~/.bashrc'
-alias sb='source ~/.bashrc'
-alias cb='cat ~/.bashrc'
+# Cartographer
+# Cartographer aliases
+alias ccw='cd ~/carto_ws'
+alias ccs='cd ~/carto_ws/src'
+alias ccm='cd ~/carto_ws && catkin_make_isolated --install --use-ninja'
 
-# ROS aliases
-alias cw='cd ~/catkin_ws'
-alias cs='cd ~/catkin_ws/src'
-alias cm='cd ~/catkin_ws && catkin_make'
-
-# ROS setting
-source /opt/ros/noetic/setup.bash
-
-# ROS Network
-export ROS_IP=192.168.0.200
-export ROS_MASTER_URI=http://192.169.0.4:11311
-export ROS_HOSTNAME=${ROS_IP}
-
-export TB3_MODEL=burger
-export TURTLEBOT3_MODEL=${TB3_MODEL}
+source ~/carto_ws/install_isolated/setup.bash	# Cartographer
 ```
 
 ## Connect
@@ -86,6 +70,9 @@ cd ./opencr_update
 ```
 ## Cartographer in Master PC
 https://github.com/cartographer-project/cartographer_ros/issues/1726
+```
+roslaunch turtlebot3_slam turtlebot3_slam.launch slam_methods:=cartographer
+```
 
 ## Reference
 [ROBOTIS:Quick Start Guide](https://emanual.robotis.com/docs/en/platform/turtlebot3/quick-start/)
